@@ -27,14 +27,17 @@ style.css: work/dirty.stamp
 	npx -y sass@1.86.2 work/app/javascript/src/styles/base.scss style.css
 	rm style.css.map
 
-.PHONY: dist clean serve
 dist: all
-	rm -rf ./work
+	mkdir -p dist
+	cp -r index.html jquery-3.7.1.min.js style.css script.mjs themes dist
+
+.PHONY: clean serve
 
 clean:
 	rm -f style.css
+	rm -rf ./dist
 	rm -rf ./work
 	rm -rf ./themes
 
-serve:
-	miniserve -v --index index.html .
+serve: dist
+	miniserve -v --index index.html ./dist
