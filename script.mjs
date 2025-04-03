@@ -231,6 +231,7 @@ const FursonaCheck = {
       //reset canvas
       ctx.fillStyle = "#fff";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      undoStack = [];
     });
   },
 };
